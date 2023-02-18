@@ -1,18 +1,22 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
 
 const Home = () => {
 
   const [products, setProducts] = useState([]);
-  console.log(products);
+  // console.log(products);
   useEffect(() => {
     fetch('products.json')
       .then(res => res.json())
       .then(data => setProducts(data))
   }, [])
 
+  // retrieve Data FromStore
+  const retrieveDataFromStore = useSelector((state) => state)
+  console.log(retrieveDataFromStore);
 
   return (
     <div>
