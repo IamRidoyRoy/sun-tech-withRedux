@@ -1,7 +1,9 @@
-import { ADD_TO_CART, REMOVE_CART } from "../actionTypes/actionTypes";
+import { ADD_TO_CART, ADD_TO_WISHLIST, REMOVE_CART } from "../actionTypes/actionTypes";
 
 const initialState = {
     cart: [],
+    remove_cart: [],
+    wishlist: [],
 };
 
 const productReducer = (state = initialState, action) => {
@@ -13,6 +15,14 @@ const productReducer = (state = initialState, action) => {
             }
         case REMOVE_CART:
             return {
+                ...state,
+                remove_cart: [...state, action.payload]
+
+            }
+        case ADD_TO_WISHLIST:
+            return {
+                ...state,
+                wishlist: [...state, action.payload]
 
             }
         default:
