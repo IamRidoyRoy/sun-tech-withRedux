@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
 
 const Home = () => {
@@ -15,8 +15,8 @@ const Home = () => {
   }, [])
 
   // retrieve Data FromStore
-  const retrieveDataFromStore = useSelector((state) => state)
-  console.log(retrieveDataFromStore);
+  // const retrieveDataFromStore = useSelector((state) => state)
+  // console.log(retrieveDataFromStore);
 
   return (
     <div>
