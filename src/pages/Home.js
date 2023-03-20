@@ -1,10 +1,15 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 // import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
+import { toggle_Brand } from "../redux/actionCreators/filterActions";
 
 const Home = () => {
+
+
+  const dispatch = useDispatch()
 
   const [products, setProducts] = useState([]);
   // console.log(products);
@@ -31,10 +36,10 @@ const Home = () => {
         >
           In Stock
         </button>
-        <button className={`border px-3 py-2 rounded-full font-semibold`} onClick={handleClick} >
+        <button onClick={() => dispatch(toggle_Brand('amd'))} className={`border px-3 py-2 rounded-full font-semibold`}  >
           AMD
         </button>
-        <button className={`border px-3 py-2 rounded-full font-semibold`} onClick={handleClick}>
+        <button onClick={() => dispatch(toggle_Brand('intel'))} className={`border px-3 py-2 rounded-full font-semibold`} >
           Intel
         </button>
       </div>
