@@ -5,7 +5,6 @@ export const initialState = {
         brands: [],
         stock: false,
     },
-
     keywords: '',
 }
 
@@ -13,17 +12,35 @@ export const initialState = {
 export const filterReducer = (state = initialState, action) => {
     switch (action.type) {
         case TOGGLE_BRAND:
-
-            return {
-                ...state,
-                filters: {
-                    ...state.brands,
-                    brands: [...state.filters.brands, action.payload]
+            // if the array is empty the brand will be added
+            if (!state.filters.brands.includes(action.payload)) {
+                return {
+                    ...state,
+                    filters: {
+                        ...state.brands,
+                        brands: [...state.filters.brands, action.payload]
+                    }
+                }
+            }
+            else {
+                // If the brand is previously added the brand will delete 
+                return {
+                    ...state,
+                    filters: {
+                        ...state.brands,
+                        brands: state.filters.brands.filter((brand) => brand !== action.payload)
+                    }
                 }
 
             }
         case TOGGLE_STOCK:
-            return {}
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    stock: !state.filters.stock,
+                }
+            }
 
         default:
             break;

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 // import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
-import { toggle_Brand } from "../redux/actionCreators/filterActions";
+import { toggleStock, toggle_Brand } from "../redux/actionCreators/filterActions";
 
 const Home = () => {
 
@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <div className='max-w-7xl gap-14 mx-auto my-10'>
       <div className='mb-10 flex justify-end gap-5'>
-        <button
+        <button onClick={() => dispatch(toggleStock())}
           className={`border px-3 py-2 rounded-full font-semibold ${activeClass} `}
         >
           In Stock
